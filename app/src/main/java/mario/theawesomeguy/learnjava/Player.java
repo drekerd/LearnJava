@@ -1,5 +1,7 @@
 package mario.theawesomeguy.learnjava;
 
+import java.util.ArrayList;
+
 public class Player {
 
     private String handleName;
@@ -7,6 +9,7 @@ public class Player {
     private int level;
     private int score;
     private Weapon weapon;
+    private ArrayList<Loot> inventory;
 
     public Player() {
         this("Unkown Player");
@@ -21,10 +24,9 @@ public class Player {
         setLives(3);
         setLevel(level);
         setScore(0);
-        setDefaultWeapon(); //creates weapon
-
+//      setDefaultWeapon(); //creates weapon
+        inventory = new ArrayList<>();
     }
-
 
     private void setDefaultWeapon(){
         this.weapon = new Weapon("Mace",10,10);
@@ -80,5 +82,21 @@ public class Player {
 
     public Weapon getWeapon() {
         return weapon;
+    }
+
+    public ArrayList<Loot> getInventory() {
+        return inventory;
+    }
+
+    public void pickUpLoot (Loot newLoot){
+        inventory.add(newLoot);
+    }
+
+    public boolean dropLoot (Loot loot){
+        if(this.inventory.contains(loot)){
+            inventory.remove(loot);
+            return true;
+        }
+        return false;
     }
 }
