@@ -94,9 +94,21 @@ public class Player {
 
     public boolean dropLoot (Loot loot){
         if(this.inventory.contains(loot)){
+            System.out.println(loot.getName()+ " was Deleted");
             inventory.remove(loot);
+
             return true;
         }
         return false;
+    }
+
+    public void showInventory(){
+
+        System.out.println("Inventory Items: ");
+        ArrayList<Loot> allItems = getInventory();
+        for(Loot item : allItems){
+            System.out.println("- "+item.getName().concat("+").concat(String.valueOf(item.getValue())));
+        }
+        System.out.println("==============================");
     }
 }

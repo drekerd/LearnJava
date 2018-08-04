@@ -5,29 +5,22 @@ import java.util.ArrayList;
 public class Demo {
 
     public static void main(String[] args) {
-        Player tim = new Player();
-        Loot loot;
-        tim.setLives(1);
-        tim.setNameAndLevel("Mario",5);
-        System.out.println(tim.getHandleName());
-        System.out.println("Level: "+tim.getLevel());
-        System.out.println("Lives: "+tim.getLives());
-//        tim.getWeapon().getname();
+
+        Enemy enemy = new Enemy("Test Enemy",10,3);
 
 
-        Weapon axe = new Weapon("Goldshine Axe",20,10);
-        tim.setWeapon(axe);
+        Troll uglyTroll = new Troll("Ugly Troll");
 
-        loot = new Loot("Heal Potion", LootType.RING,1);
-        tim.pickUpLoot(loot);
+        System.out.println("Enemy: "+uglyTroll.getName());
+        uglyTroll.takeDamage(30);
 
-        ArrayList<Loot> allItems = tim.getInventory();
-        System.out.println("Inventory Items: ");
-        for(Loot item : allItems){
-            System.out.print("- "+item.getName());
-        }
-        System.out.println("\n");
-        System.out.println(tim.getWeapon().getname());
+
+        Vampyre vlad = new Vampyre("Vlad");
+        vlad.showInfo();
+        vlad.takeDamage(8);
+        vlad.showInfo();
+
+
 
     }
 }
